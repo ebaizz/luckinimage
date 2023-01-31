@@ -1,0 +1,77 @@
+{
+  "name": "lsh-frontend",
+  "private": true,
+  "description": "LStack front-end team",
+  "keywords": [
+    "lstack",
+    "frontend"
+  ],
+  "homepage": "http://git.lstack-inner.cn/lstack-hybrid/console/lsh-frontend/#readme",
+  "bugs": {
+    "url": "http://git.lstack-inner.cn/lstack-hybrid/console/lsh-frontend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.lstack-inner.cn/lstack-hybrid/console/lsh-frontend.git"
+  },
+  "author": "lstack.com",
+  "workspaces": [
+    "packages/@cli/*",
+    "packages/@lstack/*",
+    "packages/@project/*",
+    "packages/@project/idp/core/*",
+    "packages/@project/idp/plugins/*",
+    "packages/document/*"
+  ],
+  "scripts": {
+    "commit": "git add . && git-cz",
+    "config:commit-template": "git config commit.template .commit-template",
+    "eslint:fix": "eslint --fix . --ext .js,.ts,.vue,.htm,.html,.md",
+    "eslint:lint": "eslint . --ext .js,.ts,.vue,.htm,.html,.md --format=codeframe",
+    "format": "prettier --write .",
+    "lint:md": "remark . -f -q",
+    "stylelint:fix": "stylelint --fix **/*.{css,scss,sass,vue}",
+    "stylelint:lint": "stylelint -f verbose **/*.{css,scss,sass,vue}"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{css,scss,sass,vue}": "stylelint --fix",
+    "*.{js,ts,vue,htm,html,md,yam,yaml,css,sass,scss,less,json,flow}": "prettier --write",
+    "*.{js,ts,vue,htm,html,md}": "eslint --format=codeframe",
+    "package.json": "sort-package-json"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
+  },
+  "devDependencies": {
+    "@cli/commitizen-config-lstack": "workspace:*",
+    "@cli/commitlint-config-lstack": "workspace:*",
+    "@cli/eslint-plugin-lstack": "workspace:*",
+    "@cli/remark-config-lstack": "workspace:*",
+    "@cli/stylelint-config-lstack": "workspace:*",
+    "@cli/textlint-config-lstack": "workspace:*",
+    "@commitlint/cli": "^9.1.2",
+    "@lstack/project": "workspace:*",
+    "chalk": "^4.1.0",
+    "commitizen": "^4.2.1",
+    "cz-customizable": "^6.3.0",
+    "eslint": "^6.2.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.1",
+    "remark-cli": "^8.0.1",
+    "sort-package-json": "^1.46.0",
+    "stylelint": "^13.7.1",
+    "textlint": "^11.7.6"
+  }
+}

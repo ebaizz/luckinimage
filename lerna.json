@@ -1,0 +1,29 @@
+{
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "changelog": {
+    "repo": "lstack-hybrid/console/lsh-frontend",
+    "cacheDir": ".changelog",
+    "labels": {}
+  },
+  "command": {
+    "publish": {
+      "ignoreChanges": ["*.md", "*.txt", "**/test/**", "@(!(native-modules|built-ins|plugins|package)).json"]
+    },
+    "version": {
+      "push": false,
+      "allowBranch": "master",
+      "exact": true,
+      "message": "version: 发布 版本 %v"
+    }
+  },
+  "packages": [
+    "packages/@cli/*",
+    "packages/@lstack/*",
+    "packages/@project/*",
+    "packages/@project/idp/core/*",
+    "packages/@project/idp/plugins/*",
+    "packages/document/*"
+  ]
+}
